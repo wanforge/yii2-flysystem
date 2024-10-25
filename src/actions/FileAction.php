@@ -34,8 +34,6 @@ use yii\web\NotFoundHttpException;
  */
 class FileAction extends Action
 {
-    const FILENAME_SEPARATOR = 'fname-';
-
     /**
      * @var string filesystem config component (fs)
      */
@@ -54,9 +52,7 @@ class FileAction extends Action
         $filesystem = Yii::$app->get($this->component);
 
         try {
-            [$dataEncrypt, $filename] = explode(self::FILENAME_SEPARATOR, $data);
-
-            $params = Json::decode($filesystem->/** @scrutinizer ignore-call */decrypt($dataEncrypt));
+            $params = Json::decode($filesystem->/** @scrutinizer ignore-call */decrypt($data));
 
             $now = (int) (new DateTimeImmutable())->getTimestamp();
             $expires = (int) $params['expires'];
@@ -66,10 +62,6 @@ class FileAction extends Action
             }
 
             $attachmentName = (string) pathinfo($params['path'], PATHINFO_BASENAME);
-            if ($filename !== $attachmentName) {
-                throw new NotFoundHttpException(Yii::t('yii', 'Page not found.'));
-            }
-
             $content = $filesystem->read($params['path']);
             $mimeType = $filesystem->mimeType($params['path']);
         } catch (\Throwable $th) {
