@@ -32,7 +32,7 @@ trait UrlGeneratorAdapterTrait
     public function publicUrl(string $path, /** @scrutinizer ignore-unused */Config $config): string
     {
         // TODO: Use absolute path and don't encrypt
-        if ($this->skipPrefixer !== false && $this->component->prefix) {
+        if ($this->skipPrefixer !== true && $this->component->prefix) {
             $prefixer = new PathPrefixer((string) $this->component->prefix);
             $path = $prefixer->stripPrefix($path);
         }
@@ -47,7 +47,7 @@ trait UrlGeneratorAdapterTrait
     public function temporaryUrl(string $path, DateTimeInterface $expiresAt, /** @scrutinizer ignore-unused */Config $config): string
     {
         // TODO: Use absolute path and don't encrypt
-        if ($this->skipPrefixer !== false && $this->component->prefix) {
+        if ($this->skipPrefixer !== true && $this->component->prefix) {
             $prefixer = new PathPrefixer((string) $this->component->prefix);
             $path = $prefixer->stripPrefix($path);
         }
