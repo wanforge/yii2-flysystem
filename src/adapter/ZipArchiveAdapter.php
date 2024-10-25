@@ -29,7 +29,7 @@ final class ZipArchiveAdapter implements FilesystemAdapter, ChecksumProvider, Pu
     /**
      * @var bool
      */
-    protected $skipPrefixer = true;
+    public $skipPrefixer = true;
 
     /**
      * @var LeagueZipArchiveAdapter
