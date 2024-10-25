@@ -4,6 +4,7 @@ namespace diecoding\flysystem\traits;
 
 use DateTimeInterface;
 use diecoding\flysystem\AbstractComponent;
+use diecoding\flysystem\actions\FileAction;
 use League\Flysystem\Config;
 use League\Flysystem\PathPrefixer;
 use yii\helpers\Json;
@@ -40,7 +41,7 @@ trait UrlGeneratorAdapterTrait
             'expires' => 0,
         ];
 
-        return Url::toRoute([$this->component->action, 'data' => $this->component->/** @scrutinizer ignore-call */encrypt(Json::encode($params))], true);
+        return $this->generateUrlAction($params);
     }
 
     public function temporaryUrl(string $path, DateTimeInterface $expiresAt, /** @scrutinizer ignore-unused */Config $config): string
@@ -55,6 +56,14 @@ trait UrlGeneratorAdapterTrait
             'expires' => (int) $expiresAt->getTimestamp(),
         ];
 
-        return Url::toRoute([$this->component->action, 'data' => $this->component->/** @scrutinizer ignore-call */encrypt(Json::encode($params))], true);
+        return $this->generateUrlAction($params);
+    }
+
+    private function generateUrlAction(array $params): string
+    {
+        $attachmentName = (string) pathinfo($params['path'], PATHINFO_BASENAME);
+        $data = $this->component->/** @scrutinizer ignore-call */encrypt(Json::encode($params)) . FileAction::FILENAME_SEPARATOR . $attachmentName;
+
+        return Url::toRoute([$this->component->action, 'data' => $data], true);
     }
 }
