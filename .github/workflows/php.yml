@@ -42,7 +42,14 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-interaction
 
     - name: Run test suite
-      run: composer test
+      run: vendor/bin/phpunit -c phpunit.xml.dist --log-junit build/test-results/junit.xml
+
+    - name: Upload test results to Codecov
+      if: ${{ !cancelled() }}
+      uses: codecov/test-results-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: build/test-results/junit.xml
 
   coverage:
     runs-on: ubuntu-latest
@@ -62,5 +69,9 @@ jobs:
     - name: Run coverage
       run: composer test-coverage
 
-    - name: Coverage output info
-      run: ls -lah coverage.xml
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: wanforge/yii2-flysystem
+        files: coverage.xml

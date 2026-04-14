@@ -9,7 +9,7 @@ This extension provides [Flysystem 3](https://flysystem.thephpleague.com) integr
 [![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-flysystem)](https://packagist.org/packages/diecoding/yii2-flysystem)
 [![Latest Stable Release Date](https://img.shields.io/github/release-date/wanforge/yii2-flysystem)](https://github.com/wanforge/yii2-flysystem)
 [![CI](https://github.com/wanforge/yii2-flysystem/actions/workflows/php.yml/badge.svg)](https://github.com/wanforge/yii2-flysystem/actions/workflows/php.yml)
-[![codecov](https://codecov.io/gh/wanforge/yii2-flysystem/branch/main/graph/badge.svg)](https://codecov.io/gh/wanforge/yii2-flysystem)
+[![codecov](https://codecov.io/gh/wanforge/yii2-flysystem/branch/main/graph/badge.svg)](https://app.codecov.io/gh/wanforge/yii2-flysystem)
 [![License](https://img.shields.io/github/license/wanforge/yii2-flysystem)](https://github.com/wanforge/yii2-flysystem)
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/diecoding/yii2-flysystem/php?color=6f73a6)](https://packagist.org/packages/diecoding/yii2-flysystem)
 
