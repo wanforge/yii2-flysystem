@@ -52,9 +52,10 @@ trait ModelTrait
         }
         $filePath = $this->getAttributePath($attribute) . '/' . $fileName;
         $localPath = $file->tempName;
-        $handle = fopen($localPath, 'r');
-        $contents = fread($handle, filesize($localPath));
-        fclose($handle);
+        $contents = @file_get_contents($localPath);
+        if ($contents === false) {
+            return;
+        }
 
         $filesystem = $this->getFsComponent();
         $filesystem->write($filesystem->normalizePath($filePath), $contents);
@@ -158,7 +159,7 @@ trait ModelTrait
     {
         $paths = $this->attributePaths();
         if (array_key_exists($attribute, $paths)) {
-            return $paths[$attribute];
+            return (string) $paths[$attribute];
         }
 
         return '';
@@ -192,7 +193,7 @@ trait ModelTrait
      * the applicable validation rules should be validated.
      * @param bool $clearErrors whether to call [[clearErrors()]] before performing validation
      * @return bool whether the validation is successful without any error.
-     * @throws InvalidArgumentException if the current scenario is unknown.
+     * @throws \InvalidArgumentException if the current scenario is unknown.
      */
     abstract public function validate($attributeNames = null, $clearErrors = true);
 }

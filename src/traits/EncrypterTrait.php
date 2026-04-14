@@ -63,7 +63,6 @@ trait EncrypterTrait
 
     /**
      * @param string $passphrase
-     * @param int $minPassphraseLength
      * 
      * @return void
      * @throws InvalidConfigException
@@ -71,7 +70,7 @@ trait EncrypterTrait
     private function normalizePassphrase($passphrase)
     {
         $this->_passphrase = $passphrase;
-        if (empty($this->_passphrase)) {
+        if ($this->_passphrase === null || $this->_passphrase === '') {
             throw new InvalidConfigException('The "passphrase" property must be set.');
         }
 

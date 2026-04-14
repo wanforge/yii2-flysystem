@@ -14,7 +14,7 @@
         "ftp",
 		"sftp"
 	],
-	"homepage": "https://github.com/sugeng-sulistiyawan/yii2-flysystem",
+	"homepage": "https://github.com/wanforge/yii2-flysystem",
 	"license": "MIT",
 	"authors": [
 		{
@@ -23,8 +23,8 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/sugeng-sulistiyawan/yii2-flysystem/issues",
-		"source": "https://github.com/sugeng-sulistiyawan/yii2-flysystem"
+		"issues": "https://github.com/wanforge/yii2-flysystem/issues",
+		"source": "https://github.com/wanforge/yii2-flysystem"
 	},
 	"funding": [
 		{
@@ -70,5 +70,9 @@
             "yiisoft/yii2-composer": true
         },
         "sort-packages": true
+	},
+	"scripts": {
+		"test": "phpunit -c phpunit.xml.dist",
+		"test-coverage": "phpunit -c phpunit.xml.dist --coverage-clover=coverage.xml"
     }
 }

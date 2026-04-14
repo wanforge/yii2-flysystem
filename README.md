@@ -7,10 +7,10 @@ This extension provides [Flysystem 3](https://flysystem.thephpleague.com) integr
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/diecoding/yii2-flysystem?label=stable)](https://packagist.org/packages/diecoding/yii2-flysystem)
 [![Total Downloads](https://img.shields.io/packagist/dt/diecoding/yii2-flysystem)](https://packagist.org/packages/diecoding/yii2-flysystem)
-[![Latest Stable Release Date](https://img.shields.io/github/release-date/sugeng-sulistiyawan/yii2-flysystem)](https://github.com/sugeng-sulistiyawan/yii2-flysystem)
-[![Quality Score](https://img.shields.io/scrutinizer/quality/g/sugeng-sulistiyawan/yii2-flysystem)](https://scrutinizer-ci.com/g/sugeng-sulistiyawan/yii2-flysystem)
-[![Build Status](https://img.shields.io/travis/com/sugeng-sulistiyawan/yii2-flysystem)](https://app.travis-ci.com/sugeng-sulistiyawan/yii2-flysystem)
-[![License](https://img.shields.io/github/license/sugeng-sulistiyawan/yii2-flysystem)](https://github.com/sugeng-sulistiyawan/yii2-flysystem)
+[![Latest Stable Release Date](https://img.shields.io/github/release-date/wanforge/yii2-flysystem)](https://github.com/wanforge/yii2-flysystem)
+[![CI](https://github.com/wanforge/yii2-flysystem/actions/workflows/php.yml/badge.svg)](https://github.com/wanforge/yii2-flysystem/actions/workflows/php.yml)
+[![codecov](https://codecov.io/gh/wanforge/yii2-flysystem/branch/main/graph/badge.svg)](https://codecov.io/gh/wanforge/yii2-flysystem)
+[![License](https://img.shields.io/github/license/wanforge/yii2-flysystem)](https://github.com/wanforge/yii2-flysystem)
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/diecoding/yii2-flysystem/php?color=6f73a6)](https://packagist.org/packages/diecoding/yii2-flysystem)
 
 > Yii2 Flysystem uses [league/flysystem](https://github.com/thephpleague/flysystem)
@@ -93,6 +93,21 @@ or add to the require section of your `composer.json` file.
 - [league/flysystem-webdav](https://github.com/thephpleague/flysystem-webdav)
 - [league/flysystem-ziparchive](https://github.com/thephpleague/flysystem-ziparchive)
 - [masbug/flysystem-google-drive-ext](https://github.com/masbug/flysystem-google-drive-ext)
+- [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit)
+
+## Testing
+
+Run unit tests:
+
+```shell
+composer test
+```
+
+Run tests with coverage report (`coverage.xml`):
+
+```shell
+composer test-coverage
+```
 
 ## Configuration
 
