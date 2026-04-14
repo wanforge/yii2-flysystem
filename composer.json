@@ -47,7 +47,7 @@
 		"league/flysystem-webdav": "^3.0",
 		"league/flysystem-ziparchive": "^3.0",
 		"masbug/flysystem-google-drive-ext": "^2.0",
-		"phpunit/phpunit": "~9.5.0"
+		"phpunit/phpunit": "^9.6.33"
 	},
 	"autoload": {
 		"psr-4": {
