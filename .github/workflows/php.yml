@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     branches: [ "main" ]
@@ -18,7 +21,7 @@ jobs:
         php-version: ["8.0", "8.1", "8.2", "8.3", "8.4"]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -32,14 +35,19 @@ jobs:
 
     - name: Cache Composer packages
       id: composer-cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
+    - name: Install dependencies (PHP 8.0)
+      if: matrix.php-version == '8.0'
+      run: composer install --prefer-dist --no-progress --no-interaction --ignore-platform-req=php
+
+    - name: Install dependencies (PHP >= 8.1)
+      if: matrix.php-version != '8.0'
       run: composer install --prefer-dist --no-progress --no-interaction
 
     - name: Run test suite
@@ -48,7 +56,7 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -64,7 +72,7 @@ jobs:
       run: composer test-coverage
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         files: coverage.xml
         fail_ci_if_error: false
